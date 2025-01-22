@@ -1,16 +1,6 @@
 spring:
   application:
     name: discovery-server
-  config:
-    activate:
-      on-profile: dev
-  cloud:
-    config:
-      server:
-        git:
-          uri:
-          default-label: dev
-          search-paths: dev
 eureka:
   server:
     peer-node-read-timeout-ms: 2000
