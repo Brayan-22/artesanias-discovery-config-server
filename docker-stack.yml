@@ -20,9 +20,13 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.docker.network=reverse-proxy"
-        - "traefik.http.routers.artesanias-discovery-server.rule=Host(`eureka.localhost`)"
-        - "traefik.http.routers.artesanias-discovery-server.entrypoints=web"
+        - "traefik.http.routers.artesanias-discovery-server.rule=Host(`eureka.${DOMAIN}`)"
+        - "traefik.http.routers.artesanias-discovery-server.entrypoints=websecure"
         - "traefik.http.services.artesanias-discovery-server.loadbalancer.server.port=8761"
+        - "treafik.http.routers.artesanias-discovery-server.tls=true"
+        - "traefik.http.routers.artesanias-discovery-server.tls.certresolver=cloudflare"
+        - "traefik.http.routers.artesanias-discovery-server.tls.domains[0].main=${DOMAIN}"
+        - "traefik.http.routers.artesanias-discovery-server.tls.domains[0].sans=*.${DOMAIN}"
 networks:
   backend:
     external: true
