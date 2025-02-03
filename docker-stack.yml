@@ -23,6 +23,7 @@ services:
         - "traefik.http.routers.artesanias-discovery-server.rule=Host(`eureka.${DOMAIN}`)"
         - "traefik.http.routers.artesanias-discovery-server.entrypoints=websecure"
         - "traefik.http.services.artesanias-discovery-server.loadbalancer.server.port=8761"
+        - "traefik.http.routers.artesanias-discovery-server.service=artesanias-discovery-server"
         - "treafik.http.routers.artesanias-discovery-server.tls=true"
         - "traefik.http.routers.artesanias-discovery-server.tls.certresolver=cloudflare"
         - "traefik.http.routers.artesanias-discovery-server.tls.domains[0].main=${DOMAIN}"
